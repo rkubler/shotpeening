@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Peening Coverage Simulators</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Interactive educational simulators of shot peening coverage: local coverage under a fixed jet, and coverage of a part swept by back-and-forth raster passes.">
+<meta name="description" content="Interactive educational simulators of shot peening coverage: local coverage under a fixed jet, coverage of a flat part swept by raster passes, and coverage of a rotating cylinder.">
 <meta name="author" content="Dr Régis Kubler, Arts et Métiers Institute of Technology">
 <meta property="og:title" content="Peening Coverage Simulators">
 <meta property="og:description" content="Two interactive simulators: local coverage, and coverage on a part with raster passes.">
@@ -41,8 +41,9 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(1.9rem,4.4vw,2.9
 .lede{margin:0;color:var(--muted);max-width:68ch;font-size:17px}
 .formula{font-family:var(--f-mono);color:var(--ink);white-space:nowrap;font-size:.92em}
 
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-@media (max-width:820px){.cards{grid-template-columns:minmax(0,1fr)}}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:1060px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.cards{grid-template-columns:minmax(0,1fr)}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
 .shot{position:relative;display:block;aspect-ratio:16/10;max-width:100%;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--line)}
 .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
@@ -65,11 +66,11 @@ dd{margin:0;min-width:0}
 
 section h3{font-family:var(--f-display);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
 .tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
-table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14.5px}
 th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:0}
 thead th{font-weight:600;background:var(--soft)}
-tbody th{font-weight:500;color:var(--muted);width:24%}
+tbody th{font-weight:500;color:var(--muted);width:16%}
 
 .related{display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .related img{width:130px;height:auto;border-radius:8px;border:1px solid var(--line);flex:0 0 auto}
@@ -87,7 +88,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 <header>
   <p class="byline"><b>Dr Régis Kubler</b>, Arts et Métiers Institute of Technology</p>
   <h1>Peening Coverage Simulators</h1>
-  <p class="lede">Two interactive tools for teaching how coverage builds up during shot peening. Both use the same Poisson coverage law <span class="formula">τ = 100·(1 − e<sup>−K·n</sup>)</span>. The first zooms into a small window under the jet; the second follows the nozzle across a whole part.</p>
+  <p class="lede">Three interactive tools for teaching how coverage builds up during shot peening. All use the same Poisson coverage law <span class="formula">τ = 100·(1 − e<sup>−K·n</sup>)</span>. The first zooms into a small window under the jet, the second follows the nozzle across a flat part, and the third treats a rotating cylinder.</p>
 </header>
 
 <div class="cards">
@@ -121,11 +122,31 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       <h2>Extended Shot Peening Coverage Simulator</h2>
       <p class="q">How does the step δ between back-and-forth lines change coverage across the part? <em>Follow the nozzle along a raster path and see where stripes appear.</em></p>
       <dl>
-        <dt>Inputs</dt><dd>same media and jet parameters, plus step δ, uniform or Gaussian jet profile (σ = ΔX/4), part size, raster offset</dd>
+        <dt>Inputs</dt><dd>same media and jet parameters, plus step δ, uniform, Gaussian or flattened Gaussian jet profile, part size, raster offset</dd>
         <dt>Outputs</dt><dd>coverage map, cross-section λ(y), stripe amplitude, stripe-corrected vs average model, rasters to 98 %</dd>
       </dl>
       <div class="go">
         <a class="btn" href="https://rkubler.github.io/extended-simulator/">Open the simulator →</a>
+        <span class="ver">v1.2</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <a class="shot contain" href="https://rkubler.github.io/cylinder-coverage/" aria-label="Open the Cylinder Shot Peening Coverage Simulator">
+      <img src="thumb_cyl.jpg" alt="Rotating cylinder seen from the side with helical coverage stripes left by the jet" width="720" height="279">
+      <span class="scale">R = 25 mm · 24 rpm · pitch 20 mm</span>
+    </a>
+    <div class="body">
+      <p class="eyebrow">Coverage on a cylinder</p>
+      <h2>Cylinder Shot Peening Coverage Simulator</h2>
+      <p class="q">How fast should the cylinder turn for a given traverse speed? <em>Watch the jet draw a helix on the rotating surface and see when helical stripes appear.</em></p>
+      <dl>
+        <dt>Inputs</dt><dd>same media and jet parameters, plus radius R, length, rotation speed N, traverse speed V along the axis, passes back and forth or in one direction, curvature</dd>
+        <dt>Outputs</dt><dd>3D view, unrolled coverage map, helix pitch and angle, stripe amplitude, helical stripe vs average model, passes to 98 %</dd>
+      </dl>
+      <div class="go">
+        <a class="btn" href="https://rkubler.github.io/cylinder-coverage/">Open the simulator →</a>
         <span class="ver">v1.0</span>
       </div>
     </div>
@@ -136,12 +157,12 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
   <h3 id="which">Which one to use</h3>
   <div class="tablebox">
     <table>
-      <thead><tr><th scope="col"></th><th scope="col">Local coverage</th><th scope="col">Coverage on a part</th></tr></thead>
+      <thead><tr><th scope="col"></th><th scope="col">Local coverage</th><th scope="col">Coverage on a part</th><th scope="col">Coverage on a cylinder</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Scale</th><td>a few hundred µm, individual dents</td><td>whole part, tens of mm</td></tr>
-        <tr><th scope="row">Jet path</th><td>repeated passes over the same line</td><td>back-and-forth lines with step δ</td></tr>
-        <tr><th scope="row">Rate constant</th><td><span class="formula">K = πr²·Ṅ / (V·ΔX)</span></td><td><span class="formula">K<sub>δ</sub> = K·ΔX / δ</span></td></tr>
-        <tr><th scope="row">Typical question</th><td>Is my dent size and flow rate enough to reach full coverage?</td><td>Is my step small enough to avoid under-peened stripes?</td></tr>
+        <tr><th scope="row">Scale</th><td>a few hundred µm, individual dents</td><td>whole part, tens of mm</td><td>whole cylinder surface, radius 5 to 500 mm</td></tr>
+        <tr><th scope="row">Jet path</th><td>repeated passes over the same line</td><td>back-and-forth lines with step δ</td><td>helix of pitch p = 60·V/N on the rotating surface</td></tr>
+        <tr><th scope="row">Rate constant</th><td><span class="formula">K = πr²·Ṅ / (V·ΔX)</span></td><td><span class="formula">K<sub>δ</sub> = K·ΔX / δ</span></td><td><span class="formula">K<sub>c</sub> = a·Ṅ / (2πR·V)</span></td></tr>
+        <tr><th scope="row">Typical question</th><td>Is my dent size and flow rate enough to reach full coverage?</td><td>Is my step small enough to avoid under-peened stripes?</td><td>Does my part turn fast enough for its traverse speed?</td></tr>
       </tbody>
     </table>
   </div>
