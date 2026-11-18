@@ -64,6 +64,8 @@ dd{margin:0;min-width:0}
 .btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--f-body);text-decoration:none;background:var(--accent);color:#fff;border-radius:8px;padding:10px 16px}
 .btn:hover{filter:brightness(1.07)}
 .ver{font:500 12px var(--f-mono);color:var(--muted)}
+.guide{font:600 14px var(--f-body);color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.note-guide{margin:8px 0 0}
 
 section h3{font-family:var(--f-display);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
 .tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
@@ -90,7 +92,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
   <p class="byline"><b>Dr Régis Kubler</b>, Arts et Métiers Institute of Technology</p>
   <h1>Peening Coverage Simulators</h1>
   <p class="lede">Three interactive tools for teaching how coverage builds up during shot peening. All use the same Poisson coverage law <span class="formula">τ = 100·(1 − e<sup>−K·n</sup>)</span>. The first zooms into a small window under the jet, the second follows the nozzle across a flat part, and the third treats a rotating cylinder.</p>
-  <p class="lede"><b>Valid up to 100&nbsp;% coverage.</b> The simulators describe how the surface gets covered, up to full coverage (100&nbsp;%, checked in practice as 98&nbsp;%). A coverage specified above 100&nbsp;%, such as 200&nbsp;%, only means peening for twice the time needed to reach full coverage: the models do not describe what happens after that, such as the saturation of residual stresses, roughness or over-peening.</p>
+  <p class="lede"><b>Coverage above 100&nbsp;%.</b> Following NF&nbsp;L&nbsp;06-832, the base time is the peening time needed to dent 98&nbsp;% of the surface; full coverage (100&nbsp;%) is 1.25 times the base time, and 200&nbsp;% or 300&nbsp;% means 2 or 3 times the time of full coverage. The simulators give the coverage as the dented area divided by the total area, and the time needed for a specified coverage; they do not describe what happens physically beyond full coverage, such as the saturation of residual stresses, roughness or over-peening.</p>
 </header>
 
 <div class="cards">
@@ -109,7 +111,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       </dl>
       <div class="go">
         <a class="btn" href="https://rkubler.github.io/peening-coverage/">Open the simulator →</a>
-        <span class="ver">v1.2</span>
+        <a class="guide" href="https://rkubler.github.io/peening-coverage/docs/local_coverage_guide.pdf" target="_blank" rel="noopener">User guide (PDF)</a>
+        <span class="ver">v1.5</span>
       </div>
     </div>
   </article>
@@ -129,7 +132,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       </dl>
       <div class="go">
         <a class="btn" href="https://rkubler.github.io/extended-simulator/">Open the simulator →</a>
-        <span class="ver">v1.2</span>
+        <a class="guide" href="https://rkubler.github.io/extended-simulator/docs/extended_simulator_guide.pdf" target="_blank" rel="noopener">User guide (PDF)</a>
+        <span class="ver">v1.7</span>
       </div>
     </div>
   </article>
@@ -149,7 +153,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       </dl>
       <div class="go">
         <a class="btn" href="https://rkubler.github.io/cylinder-coverage/">Open the simulator →</a>
-        <span class="ver">v1.0</span>
+        <a class="guide" href="https://rkubler.github.io/cylinder-coverage/docs/cylinder_simulator_guide.pdf" target="_blank" rel="noopener">User guide (PDF)</a>
+        <span class="ver">v1.5</span>
       </div>
     </div>
   </article>
@@ -176,9 +181,10 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     <img src="piezopeening_hammering.gif" alt="Animated spherical tool hammering the workpiece" width="130" height="80">
     <div>
       <strong>Piezopeening Coverage Simulator</strong>
-      <p>A piezoelectric actuator hammers a 3 mm spherical tool at 100 Hz while a CNC machine moves it along straight lines. Dent map, depth map and impact angle.</p>
+      <p>A piezoelectric actuator hammers a 3 mm spherical tool at 100 Hz while a CNC machine moves it along straight lines. Dent map, depth map, roughness and impact angle.</p>
     </div>
   </a>
+  <p class="note-guide"><a class="guide" href="https://rkubler.github.io/piezopeening-coverage/docs/piezopeening_simulator_guide.pdf" target="_blank" rel="noopener">Piezopeening simulator user guide (PDF)</a></p>
 </section>
 
 <footer>
