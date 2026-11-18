@@ -38,7 +38,8 @@ header{display:flex;flex-direction:column;gap:8px}
 .byline{margin:0;font-size:14px;color:var(--muted)}
 .byline b{color:var(--ink);font-weight:600}
 h1{font-family:var(--f-display);font-weight:800;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.08;letter-spacing:-.015em;margin:0;text-wrap:balance}
-.lede{margin:0;color:var(--muted);max-width:68ch;font-size:17px}
+.lede{margin:0;color:var(--muted);font-size:17px}
+.lede + .lede{margin-top:4px}
 .formula{font-family:var(--f-mono);color:var(--ink);white-space:nowrap;font-size:.92em}
 
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
@@ -89,6 +90,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
   <p class="byline"><b>Dr Régis Kubler</b>, Arts et Métiers Institute of Technology</p>
   <h1>Peening Coverage Simulators</h1>
   <p class="lede">Three interactive tools for teaching how coverage builds up during shot peening. All use the same Poisson coverage law <span class="formula">τ = 100·(1 − e<sup>−K·n</sup>)</span>. The first zooms into a small window under the jet, the second follows the nozzle across a flat part, and the third treats a rotating cylinder.</p>
+  <p class="lede"><b>Valid up to 100&nbsp;% coverage.</b> The simulators describe how the surface gets covered, up to full coverage (100&nbsp;%, checked in practice as 98&nbsp;%). A coverage specified above 100&nbsp;%, such as 200&nbsp;%, only means peening for twice the time needed to reach full coverage: the models do not describe what happens after that, such as the saturation of residual stresses, roughness or over-peening.</p>
 </header>
 
 <div class="cards">
@@ -119,7 +121,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     </a>
     <div class="body">
       <p class="eyebrow">Coverage on a part</p>
-      <h2>Plane Shot Peening Coverage Simulator</h2>
+      <h2>Extended Shot Peening Coverage Simulator</h2>
       <p class="q">How does the step δ between back-and-forth lines change coverage across the part? <em>Follow the nozzle along a raster path and see where stripes appear.</em></p>
       <dl>
         <dt>Inputs</dt><dd>same media and jet parameters, plus step δ, uniform, Gaussian or flattened Gaussian jet profile, part size, raster offset</dd>
